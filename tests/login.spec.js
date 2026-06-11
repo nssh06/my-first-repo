@@ -25,6 +25,6 @@ test.describe('Авторизация на Sauce Demo', () => {
 
     await page.locator('[data-test="login-button"]').click();
 
-    await expect(page.locator('#message')).toContainText('Epic sadface: Sorry, this user has been locked out.');
+    await expect(page.locator('[data-test="error"]')).toContainText('Epic sadface: Sorry, this user has been locked out.');
   });
 });
