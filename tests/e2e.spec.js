@@ -22,7 +22,15 @@ test.describe('E2E Test: Complete Purchase Flow', () => {
 
     await expect(page.locator('.header_secondary_container .title')).toHaveText('Products')
 
+    const mostExpensiveItem = await inventoryPage.getMostExpensiveItem()
+    console.log(`Adding most expensive item: ${mostExpensiveItem.name} (${mostExpensiveItem.price})`)
+    await inventoryPage.addItemToCart(mostExpensiveItem.name)
+
     await inventoryPage.openCart()
+
+    expect(await cartPage.isItemInCart(mostExpensiveItem.name)).toBe(true)
+    const cartItems = await cartPage.getCartItems()
+    expect(cartItems).toContain(mostExpensiveItem.name)
 
     await cartPage.goToCheckout()
 

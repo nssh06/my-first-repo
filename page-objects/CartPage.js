@@ -19,15 +19,22 @@ export class CartPage {
     await this.continueShoppingButton.click()
   }
 
+  getCartItem(itemName) {
+    return this.cartItems.filter({ hasText: itemName })
+  }
+
   async getCartItems() {
     const items = []
-    const productItems = await this.productsList.all()
-    
-    for (const item of productItems) {
-      const name = await item.locator('.cart_item_name').innerText()
-      items.push(name)
+    const count = await this.productsList.count()
+
+    for (let i = 0; i < count; i++) {
+      const name = await this.productsList
+        .nth(i)
+        .locator('.inventory_item_name')
+        .textContent()
+
+      items.push(name ? name.trim() : '')
     }
-    
     return items
   }
 
