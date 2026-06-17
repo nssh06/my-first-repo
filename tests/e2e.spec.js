@@ -6,7 +6,7 @@ import { CheckoutStepOnePage } from '../page-objects/CheckoutStepOnePage.js'
 import { CheckoutStepTwoPage } from '../page-objects/CheckoutStepTwoPage.js'
 import { CheckoutCompletePage } from '../page-objects/CheckoutCompletePage.js'
 
-test.describe('E2E Test: Complete Purchase Flow', () => {
+test.describe('@ui E2E Test: Complete Purchase Flow', () => {
   test('should successfully complete a purchase', async ({ page }) => {
     const loginPage = new LoginPage(page)
     const inventoryPage = new InventoryPage(page)

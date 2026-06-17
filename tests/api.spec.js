@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe.configure({ mode: 'serial' })
 
-test.describe('API-тесты для Restful-booker (CRUD операции)', () => {
+test.describe('@api API-тесты для Restful-booker (CRUD операции)', () => {
 
   const baseURL = 'https://restful-booker.herokuapp.com'
 
